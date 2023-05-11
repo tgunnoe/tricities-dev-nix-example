@@ -1,5 +1,5 @@
 {
-  description = "Devshell for dapp-store backend microservices";
+  description = "Example nixified monorepo";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-parts = {
@@ -48,6 +48,13 @@
                 "${self'.packages.pkg2}/lib/node_modules/pkg2/index.js"
               ];
             };
+            # Just add some packages to /bin of the image, including the Rust program
+            copyToRoot = pkgs.buildEnv {
+              name = "root";
+              paths = [ pkgs.bashInteractive self'.packages.backend ];
+              pathsToLink = [ "/bin" ];
+            };
+
           };
         };
       };

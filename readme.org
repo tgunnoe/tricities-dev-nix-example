@@ -2,8 +2,8 @@
 ** Have nix installed
 *** With flakes enabled, or use ~nix --experimental-features 'nix-command flakes'~
 ** Show all outputs
-*** ~nix flakes show github:tgunnoe/tridev-nix-example~
-*** or just ~nix flakes show~ locally
+*** ~nix flake show github:tgunnoe/tridev-nix-example~
+*** or just ~nix flake show~ locally
 ** Build different outputs
 *** ~nix build .#tridev-nix~
 *** ~nix build .#pkg2~
