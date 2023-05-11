@@ -1,0 +1,17 @@
+* Example typescript/lerna monorepo building with nix
+** Have nix installed
+*** With flakes enabled, or use ~nix --experimental-features 'nix-command flakes'~
+** Show all outputs
+*** ~nix flakes show github:tgunnoe/tridev-nix-example~
+*** or just ~nix flakes show~ locally
+** Build different outputs
+*** ~nix build .#tridev-nix~
+*** ~nix build .#pkg2~
+** Observe the ~result~ symlink of the built output
+*** ~ls -l result/lib/node_modules/tridev-nix~
+*** ~readlink result/lib/node_modules/tridev-nix/node_modules/pkg2/node_modules/pkg1~
+** Enter the devshells with project's nodejs deps in scopes
+*** ~nix develop~ for the default monorepo project or ~nix develop .#pkg1~
+** Build and add to docker a container that's entrypoint is the output of pkg2
+   Includes necessary deps like pkg1 in scope
+*** ~nix run .#oci-image-tridev-nix.copyToDockerDaemon~
