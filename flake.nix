@@ -16,7 +16,7 @@
   outputs = inputs@{ self, nixpkgs, n2c, flake-parts, dream2nix }:
     flake-parts.lib.mkFlake {inherit inputs;} {
       # Add additional systems to make output for here
-      systems = [ "x86_64-linux" ];
+      systems = [ "x86_64-linux" "x86_64-darwin" "aarch64-darwin" ];
       imports = [ dream2nix.flakeModuleBeta ];
       perSystem = {inputs', self', pkgs, config, system, ...}: {
 
@@ -28,6 +28,7 @@
               tridev-nix = {
                 method.installMethod = "symlink";
                 add-yarn.nativeBuildInputs = [
+                  # Yarn needed to be available in the nix sandbox for lerna to use
                   pkgs.yarn
                 ];
               };
@@ -37,6 +38,7 @@
           };
         };
         devShells = config.dream2nix.outputs.self.devShells;
+        # Take theh outputs of dream2nix, and // add some more (meaning add sets {} in nix-lang)
         packages = config.dream2nix.outputs.self.packages // {
           oci-image-tridev-nix = inputs.n2c.packages.${system}.nix2container.buildImage {
             name = "oci-image-tridev-nix";
