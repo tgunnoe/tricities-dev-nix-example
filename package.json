@@ -1,0 +1,19 @@
+{
+  "name": "tridev-nix",
+  "version": "1.0.0",
+  "description": "Repo to show nix with workspaces",
+  "main": "index.js",
+  "author": "Taylor <tgunnoe@gnu.lv>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "lerna run build"
+  },
+  "devDependencies": {
+    "rollup": "2.56.3",
+    "lerna": "^4.0.0"
+  }
+}

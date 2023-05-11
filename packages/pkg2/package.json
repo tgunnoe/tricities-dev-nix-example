@@ -1,0 +1,15 @@
+{
+  "name": "pkg2",
+  "version": "1.0.0",
+  "description": "a package output that uses a dependency within the monorepo",
+  "main": "index.js",
+  "author": "Taylor <tgunnoe@gnu.lv>",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc index.ts"
+  },
+  "devDependencies": {
+    "typescript": "^4.3.5",
+    "pkg1": "1.0.0"
+  }
+}

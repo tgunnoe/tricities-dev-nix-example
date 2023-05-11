@@ -1,0 +1,4 @@
+result
+node_modules/
+yarn-error.log
+packages/*/index.js

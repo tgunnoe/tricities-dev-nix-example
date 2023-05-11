@@ -1,0 +1,14 @@
+{
+  "name": "pkg1",
+  "version": "1.0.0",
+  "description": "a dependency for the monorepo",
+  "main": "index.js",
+  "author": "Taylor <tgunnoe@gnu.lv>",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc index.ts"
+  },
+  "devDependencies": {
+    "typescript": "^4.3.5"
+  }
+}
